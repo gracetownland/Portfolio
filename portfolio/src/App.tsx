@@ -1,19 +1,15 @@
+import React from "react";
+import Navbar from "./Navbar";
+import HeroSection from "./HeroSection";
+import "./index.css"; // Add styling
 
-import './App.css'
-
-function App() {
- 
-
+const App: React.FC = () => {
   return (
-    <>
-      
-      
-      <div>
-       hi
-      </div>
-      
-    </>
-  )
-}
+    <div className="bg-gray-900 min-h-screen text-white">
+      <Navbar />
+      <HeroSection />
+    </div>
+  );
+};
 
-export default App
+export default App;
