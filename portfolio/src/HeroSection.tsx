@@ -56,7 +56,6 @@ const HeroSection: React.FC = () => {
           <h1 className="text-[180px] font-extrabold text-[#0A0A0A] leading-none">
               <HoverText text="SRIHARI" />
           </h1>
-          <h2 className="text-[#0A0A0A] mt-4">🏗️ site under construction 🚧</h2>
         </div>
       </div>
     </section>
