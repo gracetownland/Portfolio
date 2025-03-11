@@ -25,10 +25,10 @@ const HoverText: React.FC<{ text: string }> = ({ text }) => {
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="flex flex-col items-center justify-center w-screen h-screen bg-gray-100 p-6 space-y-12">
+    <section className="flex flex-col items-center justify-center w-screen h-screen bg-gray-100 p-6 space-y-12 ">
       
       {/* First Row: AYUSH + Image */}
-      <div className="flex w-full max-w-full items-center overflow-hidden">
+      <div className="flex w-full max-w-full items-center overflow-hidden m-0">
         {/* AYUSH (Left - 2/3 of the space) */}
         <div className="flex-[2] text-left">
           <h1
@@ -49,7 +49,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Middle Section: Vancouver, Canada */}
-      <div className="flex justify-center w-full">
+     <div className="flex justify-center w-full m-0">
         <p className="text-sm font-bold text-[#0A0A0A] uppercase tracking-wide text-center">
           VANCOUVER, CANADA <br /> 49.2820° N, 123.1171° W
         </p>
