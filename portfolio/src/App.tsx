@@ -4,6 +4,7 @@ import HeroSection from "./HeroSection";
 import AboutMe from "./AboutMe";
 import SkillPage from "./SkillPage";
 import ProjectsSection from "./ProjectSection";
+import ContactMe from "./ContactMe";
 import "./index.css"; // Add styling
 
 const App: React.FC = () => {
@@ -14,6 +15,7 @@ const App: React.FC = () => {
     <AboutMe />
     <SkillPage />
     <ProjectsSection />
+    <ContactMe />
     </div>
   );
 };
