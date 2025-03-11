@@ -26,17 +26,20 @@ const HoverText: React.FC<{ text: string }> = ({ text }) => {
 const HeroSection: React.FC = () => {
   return (
     <section className="flex flex-col items-center justify-center w-screen h-screen bg-gray-100 p-6 space-y-12">
+      
       {/* First Row: AYUSH + Image */}
-      <div className="grid grid-cols-3 items-center w-full max-w-full">
-        {/* AYUSH (Left) */}
-        <div className="text-left col-span-2 flex justify-start">
-          <h1 className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap"
-              style={{ fontSize: "clamp(120px, 14vw, 200px)", flexGrow: 1 }}>
+      <div className="flex w-full max-w-full items-center overflow-hidden">
+        {/* AYUSH (Left - 2/3 of the space) */}
+        <div className="flex-[2] text-left">
+          <h1
+            className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap tracking-[20px]"
+            style={{ fontSize: "clamp(140px, 16vw, 240px)" }} // Slightly increased size
+          >
             <HoverText text="AYUSH" />
           </h1>
         </div>
-        {/* Right Image */}
-        <div className="flex justify-end">
+        {/* Right Image (1/3 of the space) */}
+        <div className="flex-[1] flex justify-end">
           <img
             src={heroImage1}
             alt="Right Image"
@@ -53,23 +56,26 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Second Row: Image + SRIHARI */}
-      <div className="grid grid-cols-3 items-center w-full max-w-full">
-        {/* Left Image */}
-        <div className="flex justify-start">
+      <div className="flex w-full max-w-full items-center overflow-hidden">
+        {/* Left Image (1/3 of the space) */}
+        <div className="flex-[1] flex justify-start">
           <img
             src={heroImage2}
             alt="Left Image"
             className="w-128 h-128 object-cover rounded-lg shadow-lg"
           />
         </div>
-        {/* SRIHARI (Right) */}
-        <div className="text-right col-span-2 flex justify-end">
-          <h1 className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap"
-              style={{ fontSize: "clamp(120px, 14vw, 200px)", flexGrow: 1 }}>
+        {/* SRIHARI (Right - 2/3 of the space) */}
+        <div className="flex-[2] text-right">
+          <h1
+            className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap tracking-[20px]"
+            style={{ fontSize: "clamp(140px, 16vw, 240px)" }}
+          >
             <HoverText text="SRIHARI" />
           </h1>
         </div>
       </div>
+      
     </section>
   );
 };
