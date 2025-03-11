@@ -29,8 +29,9 @@ const HeroSection: React.FC = () => {
       {/* First Row: AYUSH + Image */}
       <div className="grid grid-cols-3 items-center w-full max-w-full">
         {/* AYUSH (Left) */}
-        <div className="text-left col-span-2">
-          <h1 className="text-[180px] font-extrabold text-[#0A0A0A] leading-none">
+        <div className="text-left col-span-2 flex justify-start">
+          <h1 className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap"
+              style={{ fontSize: "clamp(120px, 14vw, 200px)", flexGrow: 1 }}>
             <HoverText text="AYUSH" />
           </h1>
         </div>
@@ -39,7 +40,7 @@ const HeroSection: React.FC = () => {
           <img
             src={heroImage1}
             alt="Right Image"
-            className="w-64 h-64 object-cover rounded-lg shadow-lg"
+            className="w-128 h-128 object-cover rounded-lg shadow-lg"
           />
         </div>
       </div>
@@ -58,12 +59,13 @@ const HeroSection: React.FC = () => {
           <img
             src={heroImage2}
             alt="Left Image"
-            className="w-64 h-64 object-cover rounded-lg shadow-lg"
+            className="w-128 h-128 object-cover rounded-lg shadow-lg"
           />
         </div>
         {/* SRIHARI (Right) */}
-        <div className="text-right col-span-2">
-          <h1 className="text-[180px] font-extrabold text-[#0A0A0A] leading-none">
+        <div className="text-right col-span-2 flex justify-end">
+          <h1 className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap"
+              style={{ fontSize: "clamp(120px, 14vw, 200px)", flexGrow: 1 }}>
             <HoverText text="SRIHARI" />
           </h1>
         </div>
