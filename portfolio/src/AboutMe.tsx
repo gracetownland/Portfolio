@@ -8,30 +8,20 @@ const AboutMe: React.FC = () => {
       
       {/* Content */}
       <div className="text-left text-lg text-gray-900 leading-relaxed">
-        <h2 className="font-semibold">What is Lorem Ipsum?</h2>
+        <h2 className="font-semibold">Hello :)</h2>
         <p className="mt-2">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          It has survived not only five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-          containing Lorem Ipsum passages, and more recently with desktop publishing software
-          like Aldus PageMaker including versions of Lorem Ipsum.
+         I'm <a href="https://youtu.be/RPrXxYBZO9c?si=4Llpl_TbwSKgxX-X&t=14"  class = "text-amber-500">Ayush</a>.<br />
+         I'm a third-year Computer Science major at UBC. I'm originally from Bangalore, India.
         </p>
+
+        <h2 className="font-semibold mt-4">What I love</h2>
+        <p className="mt-2">
+         I love solving puzzles. I love the feeling of accomplishment when I solve a problem that I've been stuck on for a while. 
+         I also deeply enjoy playing the guitar and riding motorcycles. <br/>
+         I make videos from time to time. You can check them out <a href="https://www.youtube.com/@gracetownland" class = "text-blue-500">here</a>.
+        </p>
+
         
-        <h2 className="font-semibold mt-4">Why do we use it?</h2>
-        <p className="mt-2">
-          It is a long established fact that a reader will be distracted by the readable content
-          of a page when looking at its layout. The point of using Lorem Ipsum is that it has
-          a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
-          making it look like readable English.
-        </p>
-        
-        <p className="mt-2">
-          Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text,
-          and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved
-          over the years, sometimes by accident, sometimes on purpose bruh momentum why are you still reading this.
-        </p>
       </div>
     </section>
   );
