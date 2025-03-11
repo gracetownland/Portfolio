@@ -1,11 +1,15 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
+import meetPointImg from "./assets/meetpoint.png";
+import voiceBuddyImg from "./assets/voicebuddy.png";
+import insightUBCImg from "./assets/insightubc.png";
+import notesAppImg from "./assets/notesapp.png";
 
 const projects = [
-  { title: "meet.point", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", bgColor: "bg-red-300", link: "https://devpost.com/software/meet-point" },
-  { title: "Voice Buddy", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", bgColor: "bg-blue-300", link: "https://devpost.com/software/voice-buddy" },
-  { title: "Insight UBC", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", bgColor: "bg-green-300", link: "https://www.youtube.com/watch?v=G9npJh7CKtE" },
-  { title: "Full-Stack Notes App", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", bgColor: "bg-yellow-300", link: "https://github.com/gracetownland/Note-App" }
+  { title: "meet.point", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", imageUrl: meetPointImg, link: "https://devpost.com/software/meet-point" },
+  { title: "Voice Buddy", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", imageUrl: voiceBuddyImg, link: "https://devpost.com/software/voice-buddy" },
+  { title: "Insight UBC", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", imageUrl: insightUBCImg, link: "https://www.youtube.com/watch?v=G9npJh7CKtE" },
+  { title: "Full-Stack Notes App", description: "HACKATHON WINNER, WEBDEV, PORTFOLIO DEVELOPMENT", imageUrl: notesAppImg, link: "https://github.com/gracetownland/Note-App" }
 ];
 
 const ProjectsSection: React.FC = () => {

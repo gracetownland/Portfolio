@@ -3,11 +3,11 @@ import React from "react";
 interface ProjectCardProps {
   title: string;
   description: string;
-  bgColor: string;
-  link: string; // New prop for project link
+  imageUrl: string;
+  link: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, bgColor, link }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imageUrl, link }) => {
   return (
     <a
       href={link}
@@ -16,7 +16,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, bgColor, 
       className="flex flex-col space-y-2 group cursor-pointer transition-all duration-300"
     >
       <div
-        className={`w-full h-64 ${bgColor} rounded-lg transition-transform duration-300 transform group-hover:scale-105 group-hover:shadow-lg`}
+        className="w-full h-100 rounded-lg transition-transform duration-300 transform group-hover:scale-105 group-hover:shadow-lg bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+          backgroundSize: "contain", // Ensures the image doesn't stretch but stays centered
+        }}
       ></div>
       <p className="text-xs font-semibold uppercase opacity-80 transition-opacity duration-300 group-hover:opacity-100">
         {description}
