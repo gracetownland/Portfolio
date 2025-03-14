@@ -14,39 +14,27 @@ const SkillPage: React.FC = () => {
       <div className="grid grid-cols-6 gap-4 w-full max-w-6xl">
         {/* First Column (GitHub) */}
         <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
-        <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
-        <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
-        <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
-
+        <Skill icon={jsIcon} name="JavaScript" borderColor="border-yellow-400" />
+       <Skill icon={githubIcon} name="TypeScript" borderColor="border-gray-300" />
+       <Skill icon={githubIcon} name="C++" borderColor="border-gray-300" />
+       <Skill icon={githubIcon} name="C" borderColor="border-gray-300" />
+       <Skill icon={githubIcon} name="Java" borderColor="border-gray-300" />
         {/* Second Column (DaVinci Resolve) */}
         <Skill icon={davinciIcon} name="DaVinci Resolve" borderColor="border-blue-400" />
-        <Skill icon={davinciIcon} name="DaVinci Resolve" borderColor="border-blue-400" />
-        <Skill icon={davinciIcon} name="DaVinci Resolve" borderColor="border-blue-400" />
-        <Skill icon={davinciIcon} name="DaVinci Resolve" borderColor="border-blue-400" />
+
+
+
 
         {/* Third Column (JavaScript) */}
-        <Skill icon={jsIcon} name="JavaScript" borderColor="border-yellow-400" />
-        <Skill icon={jsIcon} name="JavaScript" borderColor="border-yellow-400" />
-        <Skill icon={jsIcon} name="JavaScript" borderColor="border-yellow-400" />
-        <Skill icon={jsIcon} name="JavaScript" borderColor="border-yellow-400" />
+
 
         {/* Fourth Column (React) */}
         <Skill icon={reactIcon} name="React" borderColor="border-blue-300" />
-        <Skill icon={reactIcon} name="React" borderColor="border-blue-300" />
-        <Skill icon={reactIcon} name="React" borderColor="border-blue-300" />
-        <Skill icon={reactIcon} name="React" borderColor="border-blue-300" />
+
 
         {/* Fifth Column (Swift) */}
         <Skill icon={swiftIcon} name="Swift" borderColor="border-red-500" />
-        <Skill icon={swiftIcon} name="Swift" borderColor="border-red-500" />
-        <Skill icon={swiftIcon} name="Swift" borderColor="border-red-500" />
-        <Skill icon={swiftIcon} name="Swift" borderColor="border-red-500" />
 
-        {/* Sixth Column (GitHub) Again */}
-        <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
-        <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
-        <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
-        <Skill icon={githubIcon} name="GitHub" borderColor="border-gray-300" />
       </div>
     </section>
   );
