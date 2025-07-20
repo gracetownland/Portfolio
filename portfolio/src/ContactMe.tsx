@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactMe: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +14,9 @@ const ContactMe: React.FC = () => {
     message: false,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: false });
   };
@@ -21,7 +24,6 @@ const ContactMe: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
     const newErrors = {
       name: formData.name.trim() === "",
       email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email),
@@ -31,19 +33,36 @@ const ContactMe: React.FC = () => {
     setErrors(newErrors);
 
     if (!newErrors.name && !newErrors.email && !newErrors.message) {
-      alert("Message Sent Successfully! 🚀"); // Placeholder action
-      setFormData({ name: "", email: "", message: "" });
+      emailjs
+        .send(
+          "service_847fqhn",          
+          "template_uotq7cj",        
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          },
+          "WlyfmaU-3df4UeAfb"      
+        )
+        .then(
+          () => {
+            alert("Message Sent Successfully! 🚀");
+            setFormData({ name: "", email: "", message: "" });
+          },
+          (error) => {
+            console.error("Email send failed:", error);
+            alert("Failed to send message. Please try again.");
+          }
+        );
     }
   };
 
   return (
-    <section className="max-w-2xl mx-auto p-8">
-      {/* Title */}
+    <section id="contact" className="max-w-2xl mx-auto p-8">
       <h1 className="text-3xl font-bold mb-6 text-center hover:text-amber-500 transition duration-300">
         Contact Me
       </h1>
 
-      {/* Contact Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name Input */}
         <div>
@@ -106,9 +125,7 @@ const ContactMe: React.FC = () => {
       <div className="mt-8 text-center">
         <p className="text-gray-700 font-semibold">Or reach out via:</p>
         <div className="flex justify-center space-x-6 mt-4">
-          <a href="mailto:speak2ayushsrihari@gmail.com" className="hover:text-amber-500 transition">
-            📧 Email
-          </a>
+      
           <a href="https://github.com/gracetownland" className="hover:text-amber-800 transition">
             🖥 GitHub
           </a>
