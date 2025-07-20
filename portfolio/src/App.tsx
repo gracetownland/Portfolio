@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import AboutMe from "./AboutMe";
-import SkillPage from "./SkillPage";
 import ProjectsSection from "./ProjectSection";
 import ContactMe from "./ContactMe";
 import MotorcycleCursor from "./MotorcycleCursor";
