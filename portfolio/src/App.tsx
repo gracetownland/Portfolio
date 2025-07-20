@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import AboutMe from "./AboutMe";
+import SkillPage from "./SkillPage"; 
 import ProjectsSection from "./ProjectSection";
 import ContactMe from "./ContactMe";
 import MotorcycleCursor from "./MotorcycleCursor";
@@ -17,6 +18,12 @@ const App: React.FC = () => {
       <div id="about" className="scroll-mt-20">
         <AboutMe />
       </div>
+
+
+      <div id="skills" className="scroll-mt-20">
+        <SkillPage />
+      </div>
+
 
       <div id="projects" className="scroll-mt-20">
         <ProjectsSection />
