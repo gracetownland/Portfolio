@@ -35,14 +35,14 @@ const ContactMe: React.FC = () => {
     if (!newErrors.name && !newErrors.email && !newErrors.message) {
       emailjs
         .send(
-          "service_847fqhn",          
-          "template_uotq7cj",        
+          "service_847fqhn",
+          "template_uotq7cj",
           {
             name: formData.name,
             email: formData.email,
             message: formData.message,
           },
-          "WlyfmaU-3df4UeAfb"      
+          "WlyfmaU-3df4UeAfb"
         )
         .then(
           () => {
@@ -58,7 +58,7 @@ const ContactMe: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="max-w-2xl mx-auto p-8">
+    <section id="contact" className="w-full max-w-4xl mx-auto px-6 md:px-12 lg:px-24 py-12">
       <h1 className="text-3xl font-bold mb-6 text-center hover:text-amber-500 transition duration-300">
         Contact Me
       </h1>
@@ -72,9 +72,8 @@ const ContactMe: React.FC = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${
-              errors.name ? "border-red-500" : "border-gray-300"
-            } focus:ring focus:ring-blue-300 transition`}
+            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${errors.name ? "border-red-500" : "border-gray-300"
+              } focus:ring focus:ring-blue-300 transition`}
             placeholder="Enter your name"
           />
           {errors.name && <p className="text-red-500 text-sm mt-1">Name is required</p>}
@@ -88,9 +87,8 @@ const ContactMe: React.FC = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            } focus:ring focus:ring-blue-300 transition`}
+            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${errors.email ? "border-red-500" : "border-gray-300"
+              } focus:ring focus:ring-blue-300 transition`}
             placeholder="Enter your email"
           />
           {errors.email && <p className="text-red-500 text-sm mt-1">Enter a valid email</p>}
@@ -104,9 +102,8 @@ const ContactMe: React.FC = () => {
             value={formData.message}
             onChange={handleChange}
             rows={4}
-            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${
-              errors.message ? "border-red-500" : "border-gray-300"
-            } focus:ring focus:ring-blue-300 transition`}
+            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${errors.message ? "border-red-500" : "border-gray-300"
+              } focus:ring focus:ring-blue-300 transition`}
             placeholder="Write your message..."
           />
           {errors.message && <p className="text-red-500 text-sm mt-1">Message is required</p>}
@@ -125,7 +122,7 @@ const ContactMe: React.FC = () => {
       <div className="mt-8 text-center">
         <p className="text-gray-700 font-semibold">Or reach out via:</p>
         <div className="flex justify-center space-x-6 mt-4">
-      
+
           <a href="https://github.com/gracetownland" className="hover:text-amber-800 transition">
             🖥 GitHub
           </a>

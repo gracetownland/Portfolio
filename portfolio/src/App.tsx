@@ -2,16 +2,19 @@ import React from "react";
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import AboutMe from "./AboutMe";
-import SkillPage from "./SkillPage"; 
+import SkillPage from "./SkillPage";
+import ExperienceSection from "./ExperienceSection";
 import ProjectsSection from "./ProjectSection";
 import ContactMe from "./ContactMe";
 import MotorcycleCursor from "./MotorcycleCursor";
+import ScrollToTop from "./ScrollToTop";
 import "./index.css";
 
 const App: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen text-[#0A0A0A] scroll-smooth">
       <MotorcycleCursor />
+      <ScrollToTop />
       <Navbar />
       <HeroSection />
 
@@ -24,6 +27,9 @@ const App: React.FC = () => {
         <SkillPage />
       </div>
 
+      <div id="experience" className="scroll-mt-20">
+        <ExperienceSection />
+      </div>
 
       <div id="projects" className="scroll-mt-20">
         <ProjectsSection />

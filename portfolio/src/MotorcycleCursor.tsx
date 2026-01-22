@@ -7,33 +7,41 @@ const lerp = (start: number, end: number, factor: number) => {
 
 const MotorcycleCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [angle, setAngle] = useState(0);
+  const [tilt, setTilt] = useState(0);
+  const [facingLeft, setFacingLeft] = useState(false);
   const [prevPosition, setPrevPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
       const { clientX, clientY } = e;
 
-      // Calculate angle based on previous position
       const deltaX = clientX - prevPosition.x;
       const deltaY = clientY - prevPosition.y;
-      let newAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI); // Convert to degrees
 
-      // Ensure the motorcycle is never upside down (limit between -90° to 90°)
-    //   if (newAngle < -90) newAngle = -90;
-    //   if (newAngle > 90) newAngle = 90;
+      // Only update direction if there's significant horizontal movement
+      if (Math.abs(deltaX) > 2) {
+        setFacingLeft(deltaX < 0);
+      }
 
-      // Smooth out the rotation using linear interpolation
-      const smoothAngle = lerp(angle, newAngle, 0.5); // Lower factor = slower rotation
+      // Calculate tilt based on vertical movement relative to horizontal
+      // Limit tilt to ±30 degrees for a natural motorcycle lean effect
+      let newTilt = 0;
+      if (Math.abs(deltaX) > 1 || Math.abs(deltaY) > 1) {
+        newTilt = Math.atan2(deltaY, Math.abs(deltaX)) * (180 / Math.PI);
+        newTilt = Math.max(-30, Math.min(30, newTilt));
+      }
+
+      // Smooth out the tilt using linear interpolation
+      const smoothTilt = lerp(tilt, newTilt, 0.3);
 
       setPosition({ x: clientX, y: clientY });
-      setAngle(smoothAngle);
+      setTilt(smoothTilt);
       setPrevPosition({ x: clientX, y: clientY });
     };
 
     window.addEventListener("mousemove", moveCursor);
     return () => window.removeEventListener("mousemove", moveCursor);
-  }, [prevPosition, angle]);
+  }, [prevPosition, tilt]);
 
   return (
     <div
@@ -41,7 +49,7 @@ const MotorcycleCursor: React.FC = () => {
       style={{
         left: position.x,
         top: position.y,
-        transform: `translate(-50%, -50%) rotate(${angle}deg)`,
+        transform: `translate(-50%, -50%) scaleX(${facingLeft ? -1 : 1}) rotate(${tilt}deg)`,
         zIndex: 9999,
       }}
     >

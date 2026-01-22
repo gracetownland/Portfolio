@@ -15,7 +15,7 @@ const AboutMe: React.FC = () => {
       </div>
 
       {/* Content Section with Image on the Right */}
-      <div className="flex flex-col md:flex-row max-w-6xl mx-auto p-2 items-center">
+      <div className="flex flex-col md:flex-row w-full px-6 md:px-12 lg:px-24 py-8 items-center">
         {/* Text Content (Left) */}
         <div className="md:w-2/3 text-left text-lg text-gray-900 leading-relaxed">
           <h1 className="text-4xl font-bold mb-6">About Me</h1>
@@ -28,8 +28,8 @@ const AboutMe: React.FC = () => {
 
           <h2 className="font-semibold mt-4">What I love</h2>
           <p className="mt-2">
-            I love solving puzzles. I love the feeling of accomplishment when I solve a problem that I've been stuck on for a while. 
-            I also deeply enjoy playing the guitar and riding motorcycles. <br/>
+            I love solving puzzles. I love the feeling of accomplishment when I solve a problem that I've been stuck on for a while.
+            I also deeply enjoy playing the guitar and riding motorcycles. <br />
             I make videos from time to time. You can check them out <a href="https://www.youtube.com/@gracetownland" className="text-blue-500">here</a>.
           </p>
         </div>
