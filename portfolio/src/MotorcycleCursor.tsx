@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import motorcycle from "./assets/motorcycle.jpg"; // Make sure the image is in the same directory
+import motorcycle from "./assets/motorcycle.jpg";
+
+type MotorcycleCursorProps = {
+  pixelate?: boolean;
+};
 
 const lerp = (start: number, end: number, factor: number) => {
   return start + (end - start) * factor;
 };
 
-const MotorcycleCursor: React.FC = () => {
+const MotorcycleCursor: React.FC<MotorcycleCursorProps> = ({ pixelate = false }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [tilt, setTilt] = useState(0);
   const [facingLeft, setFacingLeft] = useState(false);
@@ -53,7 +57,12 @@ const MotorcycleCursor: React.FC = () => {
         zIndex: 9999,
       }}
     >
-      <img src={motorcycle} alt="Motorcycle Cursor" className="w-10 h-10" />
+      <img
+        src={motorcycle}
+        alt="Motorcycle Cursor"
+        className="w-10 h-10"
+        style={pixelate ? { imageRendering: "pixelated", filter: "saturate(1.15) contrast(1.1)" } : undefined}
+      />
     </div>
   );
 };
