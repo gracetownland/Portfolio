@@ -62,7 +62,7 @@ const projects = [
 
 const ProjectsSection: React.FC = () => {
   return (
-    <section className="w-full px-6 md:px-12 lg:px-24 py-12">
+    <section id="projects" className="w-full px-6 md:px-12 lg:px-24 py-12">
       <div className="flex items-center gap-3 mb-6">
         <h2 className="text-2xl font-bold">Projects</h2>
         <span className="text-sm text-gray-500 animate-pulse">Click any image to reveal a fun fact!</span>

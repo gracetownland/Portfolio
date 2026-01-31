@@ -33,7 +33,7 @@ const HeroFlipCard: React.FC<HeroFlipCardProps> = ({ image, alt, backContent }) 
 
   return (
     <div
-      className={`hero-flip-card w-128 h-128 ${isFlipped ? "flipped" : ""}`}
+      className={`hero-flip-card w-64 h-64 md:w-96 md:h-96 lg:w-128 lg:h-128 ${isFlipped ? "flipped" : ""}`}
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <div className="hero-flip-card-inner w-full h-full">
@@ -47,7 +47,7 @@ const HeroFlipCard: React.FC<HeroFlipCardProps> = ({ image, alt, backContent }) 
         <div className="hero-flip-card-back shadow-lg">
           <div className="flex flex-col items-center justify-center gap-3">
             <span className="text-4xl">✨</span>
-            <p className="text-lg font-semibold leading-relaxed">{backContent}</p>
+            <p className="text-sm md:text-lg font-semibold leading-relaxed">{backContent}</p>
             <span className="text-xs opacity-75 mt-2">Click to flip back</span>
           </div>
         </div>
@@ -58,21 +58,21 @@ const HeroFlipCard: React.FC<HeroFlipCardProps> = ({ image, alt, backContent }) 
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center w-screen h-screen bg-gray-100 p-6 space-y-12 ">
+    <section className="relative flex flex-col items-center justify-center w-full min-h-screen bg-gray-100 p-6 space-y-12 overflow-x-hidden py-24 md:py-0">
 
       {/* First Row: AYUSH + Image */}
-      <div className="flex w-full max-w-full items-center overflow-hidden m-0">
+      <div className="flex flex-col-reverse md:flex-row w-full max-w-full items-center m-0 gap-6 md:gap-0">
         {/* AYUSH (Left - 2/3 of the space) */}
-        <div className="flex-[2] text-left">
+        <div className="w-full md:flex-[2] text-center md:text-left flex justify-center md:justify-start">
           <h1
-            className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap tracking-[20px]"
-            style={{ fontSize: "clamp(140px, 16vw, 240px)" }} // Slightly increased size
+            className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap tracking-[10px] md:tracking-[20px]"
+            style={{ fontSize: "clamp(60px, 16vw, 240px)" }}
           >
             <HoverText text="AYUSH" />
           </h1>
         </div>
         {/* Right Image (1/3 of the space) */}
-        <div className="flex-[1] flex justify-end">
+        <div className="w-full md:flex-[1] flex justify-center md:justify-end z-10">
           <HeroFlipCard
             image={heroImage1}
             alt="Right Image"
@@ -83,15 +83,15 @@ const HeroSection: React.FC = () => {
 
       {/* Middle Section: Vancouver, Canada */}
       <div className="flex justify-center w-full m-0">
-        <p className="text-sm font-bold text-[#0A0A0A] uppercase tracking-wide text-center">
+        <p className="text-xs md:text-sm font-bold text-[#0A0A0A] uppercase tracking-wide text-center">
           VANCOUVER, CANADA <br /> 49.2820° N, 123.1171° W
         </p>
       </div>
 
       {/* Second Row: Image + SRIHARI */}
-      <div className="flex w-full max-w-full items-center overflow-hidden">
+      <div className="flex flex-col md:flex-row w-full max-w-full items-center gap-6 md:gap-0">
         {/* Left Image (1/3 of the space) */}
-        <div className="flex-[1] flex justify-start">
+        <div className="w-full md:flex-[1] flex justify-center md:justify-start z-10">
           <HeroFlipCard
             image={heroImage2}
             alt="Left Image"
@@ -99,10 +99,10 @@ const HeroSection: React.FC = () => {
           />
         </div>
         {/* SRIHARI (Right - 2/3 of the space) */}
-        <div className="flex-[2] text-right">
+        <div className="w-full md:flex-[2] text-center md:text-right flex justify-center md:justify-end">
           <h1
-            className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap tracking-[20px]"
-            style={{ fontSize: "clamp(140px, 16vw, 240px)" }}
+            className="font-extrabold text-[#0A0A0A] leading-none whitespace-nowrap tracking-[10px] md:tracking-[20px]"
+            style={{ fontSize: "clamp(60px, 16vw, 240px)" }}
           >
             <HoverText text="SRIHARI" />
           </h1>
@@ -110,7 +110,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center scroll-indicator">
+      <div className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 flex-col items-center scroll-indicator">
         <span className="text-xs text-gray-500 mb-2">Scroll to explore</span>
         <svg
           className="w-6 h-6 text-gray-400"

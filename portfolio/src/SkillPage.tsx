@@ -30,7 +30,7 @@ const SkillPage: React.FC = () => {
     <section className="flex flex-col items-start justify-center min-h-screen bg-gray-100 px-6 md:px-12 lg:px-24 py-12 space-y-12">
       <h1 className="text-3xl font-bold text-left w-full">Skills</h1>
 
-      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-4 w-full">
         {/* Programming Languages */}
         <Skill icon={jsIcon} name="JavaScript" borderColor="border-yellow-400" />
         <Skill icon={tsIcon} name="TypeScript" borderColor="border-blue-400" />
