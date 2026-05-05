@@ -1,9 +1,12 @@
 import React from "react";
+import GrowingVines from "./GrowingVines";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center w-full min-h-[85vh] bg-gray-100 px-6 py-24">
-      <div className="max-w-3xl text-center space-y-6">
+    <section className="relative flex flex-col items-center justify-center w-full min-h-[85vh] bg-gray-100 px-6 py-24 overflow-hidden">
+      <GrowingVines />
+
+      <div className="relative z-10 max-w-3xl text-center space-y-6">
         {/* Name */}
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#0A0A0A]">
           Ayush Srihari

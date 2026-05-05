@@ -15,7 +15,11 @@ const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-50 bg-gray-100/90 backdrop-blur-sm border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo / Name */}
-        <a href="#" className="text-lg font-bold text-[#0A0A0A] hover:text-orange-500 transition-colors">
+        <a
+          href="#"
+          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          className="text-lg font-bold text-[#0A0A0A] hover:text-orange-500 transition-colors"
+        >
           AS
         </a>
 
