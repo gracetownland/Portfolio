@@ -9,14 +9,17 @@ import ContactMe from "./ContactMe";
 import MotorcycleCursor from "./MotorcycleCursor";
 import ScrollToTop from "./ScrollToTop";
 import KonamiMode from "./KonamiMode";
-import "./index.css";
 
 const App: React.FC = () => {
   const [konamiActive, setKonamiActive] = useState(false);
 
   return (
     <div
-      className={`bg-gray-100 min-h-screen scroll-smooth ${konamiActive ? "konami-shell text-[#d6f1ff]" : "text-[#0A0A0A]"}`}
+      className={`min-h-screen scroll-smooth ${
+        konamiActive
+          ? "konami-shell text-[#d6f1ff]"
+          : "bg-gray-50 text-[#0A0A0A]"
+      }`}
     >
       <MotorcycleCursor pixelate={konamiActive} />
       <KonamiMode active={konamiActive} onActiveChange={setKonamiActive} />
@@ -28,11 +31,6 @@ const App: React.FC = () => {
         <AboutMe />
       </div>
 
-
-      <div id="skills" className="scroll-mt-20">
-        <SkillPage />
-      </div>
-
       <div id="experience" className="scroll-mt-20">
         <ExperienceSection />
       </div>
@@ -41,9 +39,41 @@ const App: React.FC = () => {
         <ProjectsSection />
       </div>
 
+      <div id="skills" className="scroll-mt-20">
+        <SkillPage />
+      </div>
+
       <div id="contact" className="scroll-mt-20">
         <ContactMe />
       </div>
+
+      {/* Footer */}
+      <footer className="w-full py-8 border-t border-gray-200">
+        <div className="flex justify-center gap-8 text-sm">
+          <a
+            href="mailto:speak2ayushsrihari@gmail.com"
+            className="text-gray-600 hover:text-[#0A0A0A] transition-colors"
+          >
+            Mail
+          </a>
+          <a
+            href="https://github.com/gracetownland"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-[#0A0A0A] transition-colors"
+          >
+            Github
+          </a>
+          <a
+            href="https://linkedin.com/in/ayush-s-7b500b1a1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-[#0A0A0A] transition-colors"
+          >
+            Linkedin
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };

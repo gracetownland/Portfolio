@@ -14,6 +14,9 @@ const ContactMe: React.FC = () => {
     message: false,
   });
 
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -33,6 +36,7 @@ const ContactMe: React.FC = () => {
     setErrors(newErrors);
 
     if (!newErrors.name && !newErrors.email && !newErrors.message) {
+      setSending(true);
       emailjs
         .send(
           "service_847fqhn",
@@ -46,11 +50,14 @@ const ContactMe: React.FC = () => {
         )
         .then(
           () => {
-            alert("Message Sent Successfully! 🚀");
+            setSent(true);
+            setSending(false);
             setFormData({ name: "", email: "", message: "" });
+            setTimeout(() => setSent(false), 4000);
           },
           (error) => {
             console.error("Email send failed:", error);
+            setSending(false);
             alert("Failed to send message. Please try again.");
           }
         );
@@ -58,78 +65,71 @@ const ContactMe: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="w-full max-w-4xl mx-auto px-6 md:px-12 lg:px-24 py-12">
-      <h1 className="text-3xl font-bold mb-6 text-center hover:text-amber-500 transition duration-300">
-        Contact Me
-      </h1>
+    <section className="w-full px-6 md:px-12 lg:px-24 py-16">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
+        <p className="text-gray-500 mb-8">
+          Have a project in mind or want to chat? Drop me a message.
+        </p>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Name Input */}
-        <div>
-          <label className="block text-lg font-semibold text-gray-900">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${errors.name ? "border-red-500" : "border-gray-300"
-              } focus:ring focus:ring-blue-300 transition`}
-            placeholder="Enter your name"
-          />
-          {errors.name && <p className="text-red-500 text-sm mt-1">Name is required</p>}
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Name */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={`w-full px-4 py-2.5 rounded-lg border ${
+                errors.name ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:border-transparent transition`}
+              placeholder="Your name"
+            />
+            {errors.name && <p className="text-red-500 text-xs mt-1">Name is required</p>}
+          </div>
 
-        {/* Email Input */}
-        <div>
-          <label className="block text-lg font-semibold text-gray-900">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${errors.email ? "border-red-500" : "border-gray-300"
-              } focus:ring focus:ring-blue-300 transition`}
-            placeholder="Enter your email"
-          />
-          {errors.email && <p className="text-red-500 text-sm mt-1">Enter a valid email</p>}
-        </div>
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={`w-full px-4 py-2.5 rounded-lg border ${
+                errors.email ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:border-transparent transition`}
+              placeholder="you@example.com"
+            />
+            {errors.email && <p className="text-red-500 text-xs mt-1">Enter a valid email</p>}
+          </div>
 
-        {/* Message Input */}
-        <div>
-          <label className="block text-lg font-semibold text-gray-900">Message</label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows={4}
-            className={`w-full mt-1 px-4 py-2 rounded-lg border-2 ${errors.message ? "border-red-500" : "border-gray-300"
-              } focus:ring focus:ring-blue-300 transition`}
-            placeholder="Write your message..."
-          />
-          {errors.message && <p className="text-red-500 text-sm mt-1">Message is required</p>}
-        </div>
+          {/* Message */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              className={`w-full px-4 py-2.5 rounded-lg border ${
+                errors.message ? "border-red-400" : "border-gray-300"
+              } focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:border-transparent transition resize-none`}
+              placeholder="What's on your mind?"
+            />
+            {errors.message && <p className="text-red-500 text-xs mt-1">Message is required</p>}
+          </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full py-3 text-lg font-bold text-white bg-blue-500 rounded-lg hover:bg-amber-600 transition-transform transform hover:scale-105 shadow-md"
-        >
-          Send Message
-        </button>
-      </form>
-
-      {/* Social Links */}
-      <div className="mt-8 text-center">
-        <p className="text-gray-700 font-semibold">Or reach out via:</p>
-        <div className="flex justify-center space-x-6 mt-4">
-
-          <a href="https://github.com/gracetownland" className="hover:text-amber-800 transition">
-            🖥 GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/ayush-s-7b500b1a1/" className="hover:text-amber-700 transition">
-            💼 LinkedIn
-          </a>
-        </div>
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={sending}
+            className="w-full py-3 text-base font-semibold text-white bg-[#0A0A0A] rounded-lg hover:bg-gray-800 disabled:opacity-50 transition-colors duration-200"
+          >
+            {sending ? "Sending..." : sent ? "Sent! ✓" : "Send Message"}
+          </button>
+        </form>
       </div>
     </section>
   );
