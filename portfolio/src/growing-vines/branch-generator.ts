@@ -260,13 +260,12 @@ export function createBranchGenerator(
       // --- Sub-branch spawning logic ---
       // Only spawn if we haven't exceeded max depth
       if (config.depth < CONFIG.MAX_DEPTH) {
-        // Spawn earlier and more frequently
-        const spawnProbability = progress >= 0.15
-          ? 0.04 * progress
+        // Moderate spawn rate — enough to look natural without exploding
+        const spawnProbability = progress >= 0.3
+          ? 0.015 * progress
           : 0;
 
         if (spawnProbability > 0 && rng() < spawnProbability) {
-          // Stagger sub-branch start with randomized delay of 5-20 frames
           const delay = Math.floor(randRange(rng, CONFIG.SPAWN_DELAY_MIN, CONFIG.SPAWN_DELAY_MAX + 1));
           const childBranch = spawnSubBranch(branch, newAngle, endPoint, progress, delay);
           branch.children.push(childBranch);
