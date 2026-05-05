@@ -61,9 +61,8 @@ export function createBranchGenerator(
     // Generate left-side branches (x = 0, angle pointing inward toward center)
     for (let i = 0; i < leftCount; i++) {
       const startY = leftYPositions[i] * canvasHeight;
-      // Point toward center with slight upward bias and small variation
-      // Base angle ~0 (pointing right), with ±15° variation
-      const initialAngle = randRange(rng, -0.25, 0.25);
+      // Point generally inward with more variation: ±40° from horizontal
+      const initialAngle = randRange(rng, -0.7, 0.7);
       const maxLength = randRange(rng, CONFIG.MAX_LENGTH_MIN, CONFIG.MAX_LENGTH_MAX) * canvasWidth;
       const baseThickness = randRange(rng, CONFIG.BASE_THICKNESS_MIN, CONFIG.BASE_THICKNESS_MAX);
       const growthSpeed = randRange(rng, 0.9, 1.1);
@@ -88,8 +87,8 @@ export function createBranchGenerator(
     // Generate right-side branches (x = canvasWidth, angle pointing inward toward center)
     for (let i = 0; i < rightCount; i++) {
       const startY = rightYPositions[i] * canvasHeight;
-      // Point toward center: base angle ~PI (pointing left), with ±15° variation
-      const initialAngle = Math.PI + randRange(rng, -0.25, 0.25);
+      // Point generally inward with more variation: ±40° from horizontal
+      const initialAngle = Math.PI + randRange(rng, -0.7, 0.7);
       const maxLength = randRange(rng, CONFIG.MAX_LENGTH_MIN, CONFIG.MAX_LENGTH_MAX) * canvasWidth;
       const baseThickness = randRange(rng, CONFIG.BASE_THICKNESS_MIN, CONFIG.BASE_THICKNESS_MAX);
       const growthSpeed = randRange(rng, 0.9, 1.1);
@@ -148,12 +147,12 @@ export function createBranchGenerator(
 
   /** Segment length target in pixels */
   const SEGMENT_LENGTH = 12; // ~10-15px per segment
-  /** Maximum angle perturbation from noise (radians) — gentle undulation */
-  const NOISE_ANGLE_SCALE = 0.15;
+  /** Maximum angle perturbation from noise (radians) — organic undulation */
+  const NOISE_ANGLE_SCALE = 0.25;
   /** Noise sampling frequency along branch length */
   const NOISE_FREQUENCY = 0.02;
   /** How often to record a blossom slot (every N segments) */
-  const BLOSSOM_SLOT_INTERVAL = 3; // every 3 segments
+  const BLOSSOM_SLOT_INTERVAL = 5;
 
   function growBranch(branch: BranchState, deltaTime: number, elapsed: number): void {
     if (!branch.isGrowing) return;
@@ -261,9 +260,9 @@ export function createBranchGenerator(
       // --- Sub-branch spawning logic ---
       // Only spawn if we haven't exceeded max depth
       if (config.depth < CONFIG.MAX_DEPTH) {
-        // Probability increases with progress: 0.02 * progress per segment
-        const spawnProbability = progress >= CONFIG.SUB_BRANCH_SPAWN_START
-          ? 0.02 * progress
+        // Spawn earlier and more frequently
+        const spawnProbability = progress >= 0.15
+          ? 0.04 * progress
           : 0;
 
         if (spawnProbability > 0 && rng() < spawnProbability) {

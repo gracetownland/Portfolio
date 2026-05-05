@@ -109,10 +109,12 @@ export function createBlossomSystem(noise: NoiseFn2D, seed: number): BlossomSyst
         continue;
       }
 
-      // Density increases toward tips: probability scales with slot index
-      // Earlier slots (near base) have lower probability, later slots (near tip) have higher
+      // Only spawn blossoms in the outer 40% of the branch (toward tips)
       const tipFactor = (i + 1) / slots.length;
-      const spawnProbability = tipFactor * 0.6; // max 60% chance at tip
+      if (tipFactor < 0.6) continue;
+
+      // Low probability — only a few blossoms per branch
+      const spawnProbability = 0.15;
 
       if (rng() < spawnProbability) {
         usedSlots.add(key);
