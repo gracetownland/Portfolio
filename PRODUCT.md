@@ -16,7 +16,7 @@ A personal portfolio for Ayush Srihari (GitHub: `gracetownland`) that showcases 
 Motorcycles plus code. The motorcycle identity is a real part of who Ayush is and anchors the site's personality (custom MotorcycleCursor, motorcycle imagery), alongside hand-built delight and concrete, metric-driven project copy.
 
 ## Operating Context
-Single-page site with anchor navigation, in order: Hero, About, Experience, Projects, Skills, Contact, Footer (Mail / Github / Linkedin). Contact form sends email through EmailJS; there is no backend.
+Single-page site with anchor navigation, in order: Hero, Experience, Projects, Skills, About, Contact (the last section; it also holds the Mail / GitHub / LinkedIn links). Contact form sends email through EmailJS; there is no backend.
 
 ## Capabilities and Constraints
 - Static, client-rendered React + Vite + Tailwind site. No backend, auth, CMS, or database. No router, state library, or test framework unless asked (from existing project docs).

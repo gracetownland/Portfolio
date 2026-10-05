@@ -117,7 +117,7 @@ Near-black ink and white do the work; a single orange family appears in small, d
 
 ### Primary
 - **Highlighter Orange** (accent, #f97316): section-title rule, role dot, primary pill buttons, hover underlines, focus ring on inputs. Always carries ink text (about 6.5:1), never white text, never small orange text on white.
-- **Burnt Orange** (accent-deep, #c2410c): the only orange safe for small text on white (about 5.2:1). Used for project subtitles, validation errors, nav and footer link hover, and the global focus outline.
+- **Burnt Orange** (accent-deep, #c2410c): the only orange safe for small text on white (about 5.2:1). Used for project subtitles, validation errors, nav link hover, and the global focus outline.
 - **Marker Peach** (accent-soft, #ffedd5): the marker stripe behind bolded key numbers and the hover wash on underlined links. Also the fill of project tags (tag-fill).
 
 ### Neutral
@@ -150,7 +150,7 @@ Near-black ink and white do the work; a single orange family appears in small, d
 
 ## Layout
 
-Single page with anchor sections in order Hero, About, Experience, Projects, Skills, Contact, Footer. Content sits in a max-w-6xl column with gutters of 24px, 48px (md) and 96px (lg); sections breathe with 80px (mobile) to 112px (md) vertical padding and 48px between header and content. The hero text column is max-w-3xl; the hero photo is the one element wider than the column (max-w-[88rem]) and is shown at its natural proportion, uncropped. Rows use a 12rem label column plus content (Experience, Skills), a 2/5 + 3/5 split (Projects), and an image + text split (About). Anchored sections use scroll-mt-20 under the sticky nav. Collapse to a single column below md/lg.
+Single page with anchor sections in order Hero (name, role, a one-sentence at-a-glance statement and the bikes card), Experience, Projects, Skills, About, Contact (the last section, no separate footer). Content sits in a max-w-6xl column with gutters of 24px, 48px (md) and 96px (lg); sections breathe with 80px (mobile) to 112px (md) vertical padding and 48px between header and content. The hero text column is max-w-3xl; the hero photo is the one element wider than the column (max-w-[88rem]) and is shown at its natural proportion, uncropped. Rows use a 12rem label column plus content (Experience, Skills), a 2/5 + 3/5 split (Projects), and an image + text split (About). Anchored sections use scroll-mt-20 under the sticky nav. Collapse to a single column below md/lg.
 
 ## Elevation & Depth
 
@@ -167,7 +167,7 @@ Soft and round, in a clear size order: pill (9999px) for buttons and the nav mon
 
 ### Buttons
 - **Shape:** full pill (9999px), 12px 24px, bold.
-- **Primary:** Highlighter Orange fill, ink text (Get in Touch, Send). The only orange-filled controls.
+- **Primary:** Highlighter Orange fill, ink text (Email me, Send). The only orange-filled controls.
 - **Outline:** 2px ink border, ink text (GitHub, LinkedIn).
 - **Hover / Focus:** both invert to ink fill with white text over 200ms; keyboard focus shows the 2px burnt-orange outline. Disabled drops to 50% opacity.
 
