@@ -183,7 +183,7 @@ const ContactMe: React.FC = () => {
           </form>
         </div>
 
-        {/* Direct links: the same three as the footer, given room to breathe */}
+        {/* Direct links, given room to breathe */}
         <ul className="space-y-4 lg:pt-9 text-2xl md:text-3xl font-extrabold">
           {[
             { label: "Mail", href: "mailto:speak2ayushsrihari@gmail.com" },
