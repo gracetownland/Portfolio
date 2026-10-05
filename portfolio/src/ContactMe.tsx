@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import SectionTitle from "./SectionTitle";
 
 const inputClass = (hasError: boolean) =>
-  `w-full px-4 py-2.5 rounded-lg border ${
-    hasError ? "border-red-700" : "border-gray-300"
-  } focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:border-transparent transition`;
+  `w-full px-4 py-2.5 bg-white text-ink rounded-lg border ${
+    hasError ? "border-accent-deep" : "border-gray-300"
+  } placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-ink`;
 
 const ContactMe: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -72,19 +73,20 @@ const ContactMe: React.FC = () => {
   };
 
   return (
-    <section className="w-full px-6 md:px-12 lg:px-24 py-20 md:py-24">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[12rem_1fr] gap-x-12 gap-y-8">
-        <h2 className="text-3xl font-bold self-start lg:sticky lg:top-24">Get in Touch</h2>
+    <section className="w-full text-ink px-6 md:px-12 lg:px-24 py-20 md:py-28">
+      <div className="max-w-6xl mx-auto space-y-12">
+        <SectionTitle>Get in Touch</SectionTitle>
 
-        <div className="max-w-xl">
-          <p className="text-gray-600 mb-8">
+        <div className="grid lg:grid-cols-[minmax(0,36rem)_1fr] gap-x-20 gap-y-12">
+        <div>
+          <p className="text-gray-700 mb-8">
             Have a project in mind or want to chat? Drop me a message.
           </p>
 
           <form onSubmit={handleSubmit} noValidate className="space-y-5">
             {/* Name */}
             <div>
-              <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="contact-name" className="block text-sm font-semibold text-ink mb-1">
                 Name
               </label>
               <input
@@ -100,7 +102,7 @@ const ContactMe: React.FC = () => {
                 placeholder="Your name"
               />
               {errors.name && (
-                <p id="contact-name-error" className="text-red-700 text-sm mt-1">
+                <p id="contact-name-error" className="text-accent-deep font-semibold text-sm mt-1">
                   Name is required
                 </p>
               )}
@@ -108,7 +110,7 @@ const ContactMe: React.FC = () => {
 
             {/* Email */}
             <div>
-              <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="contact-email" className="block text-sm font-semibold text-ink mb-1">
                 Email
               </label>
               <input
@@ -124,7 +126,7 @@ const ContactMe: React.FC = () => {
                 placeholder="you@example.com"
               />
               {errors.email && (
-                <p id="contact-email-error" className="text-red-700 text-sm mt-1">
+                <p id="contact-email-error" className="text-accent-deep font-semibold text-sm mt-1">
                   Enter a valid email
                 </p>
               )}
@@ -132,7 +134,7 @@ const ContactMe: React.FC = () => {
 
             {/* Message */}
             <div>
-              <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="contact-message" className="block text-sm font-semibold text-ink mb-1">
                 Message
               </label>
               <textarea
@@ -147,7 +149,7 @@ const ContactMe: React.FC = () => {
                 placeholder="What's on your mind?"
               />
               {errors.message && (
-                <p id="contact-message-error" className="text-red-700 text-sm mt-1">
+                <p id="contact-message-error" className="text-accent-deep font-semibold text-sm mt-1">
                   Message is required
                 </p>
               )}
@@ -157,16 +159,16 @@ const ContactMe: React.FC = () => {
             <button
               type="submit"
               disabled={sending}
-              className="w-full py-3 text-base font-semibold text-white bg-[#0A0A0A] rounded-lg hover:bg-gray-800 disabled:opacity-50 transition-colors duration-200"
+              className="px-8 py-3 text-base font-bold text-ink bg-accent rounded-full hover:bg-ink hover:text-white disabled:opacity-50 transition-colors duration-200"
             >
               {sending ? "Sending..." : "Send Message"}
             </button>
 
             {/* Live status: announced to screen readers, no blocking dialog */}
             <div aria-live="polite" className="min-h-6 text-sm">
-              {sent && <p className="text-gray-700">Message sent. Thanks, I'll get back to you soon.</p>}
+              {sent && <p className="font-semibold text-ink">Message sent. Thanks, I'll get back to you soon.</p>}
               {sendFailed && (
-                <p role="alert" className="text-red-700">
+                <p role="alert" className="text-accent-deep font-semibold">
                   Couldn't send your message. Please try again, or email{" "}
                   <a
                     href="mailto:speak2ayushsrihari@gmail.com"
@@ -179,6 +181,26 @@ const ContactMe: React.FC = () => {
               )}
             </div>
           </form>
+        </div>
+
+        {/* Direct links: the same three as the footer, given room to breathe */}
+        <ul className="space-y-4 lg:pt-9 text-2xl md:text-3xl font-extrabold">
+          {[
+            { label: "Mail", href: "mailto:speak2ayushsrihari@gmail.com" },
+            { label: "GitHub", href: "https://github.com/gracetownland" },
+            { label: "LinkedIn", href: "https://linkedin.com/in/ayush-s-7b500b1a1" },
+          ].map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="underline decoration-accent decoration-4 underline-offset-8 hover:bg-accent-soft"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
         </div>
       </div>
     </section>
