@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-04T00:00:00Z",
+  "title": "Design System: Ayush Srihari Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#171717", "tonalRamp": ["#0a0a0a", "#171717", "#262626", "#404040", "#737373", "#a3a3a3", "#d4d4d4", "#f5f5f5"] },
+      "accent": { "role": "primary", "displayName": "Highlighter Orange", "canonical": "#f97316", "tonalRamp": ["#7c2d12", "#9a3412", "#c2410c", "#ea580c", "#f97316", "#fb923c", "#fdba74", "#ffedd5"] },
+      "accent-deep": { "role": "primary", "displayName": "Burnt Orange", "canonical": "#c2410c", "tonalRamp": ["#431407", "#7c2d12", "#9a3412", "#c2410c", "#ea580c", "#f97316", "#fb923c", "#fed7aa"] },
+      "accent-soft": { "role": "primary", "displayName": "Marker Peach", "canonical": "#ffedd5", "tonalRamp": ["#c2410c", "#f97316", "#fb923c", "#fdba74", "#fed7aa", "#ffedd5", "#fff7ed", "#fffaf4"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#ffffff", "tonalRamp": ["#d4d4d4", "#e5e5e5", "#eeeeee", "#f5f5f5", "#fafafa", "#fffaf4", "#fffdfb", "#ffffff"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline Peach", "canonical": "#fed7aa", "tonalRamp": ["#c2410c", "#ea580c", "#f97316", "#fb923c", "#fdba74", "#fed7aa", "#ffedd5", "#fff7ed"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name only." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, always with the orange rule." },
+      "title": { "displayName": "Title", "purpose": "Roles and project names." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs and bullets." },
+      "label": { "displayName": "Label", "purpose": "Tags, dates, nav, form labels." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "invert", "value": "colors 200ms (ease default)", "purpose": "Pill buttons and nav monogram invert to ink on hover." },
+      { "name": "thumb-colour", "value": "filter 300ms", "purpose": "Project thumbnail grayscale to colour on hover." },
+      { "name": "cursor-follow", "value": "transform 200ms ease-out", "purpose": "Motorcycle cursor follow and lean." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Orange pill with ink text; the only orange-filled control.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get in Touch</a>",
+      "css": ".ds-btn-primary { display: inline-block; padding: 12px 24px; border-radius: 9999px; background: #f97316; color: #171717; font-weight: 700; text-decoration: none; transition: background-color 200ms, color 200ms; } .ds-btn-primary:hover { background: #171717; color: #fff; } .ds-btn-primary:focus-visible { outline: 2px solid #c2410c; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Pill Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ink-outlined pill for secondary links.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">GitHub</a>",
+      "css": ".ds-btn-outline { display: inline-block; padding: 12px 24px; border-radius: 9999px; border: 2px solid #171717; color: #171717; font-weight: 700; text-decoration: none; transition: background-color 200ms, color 200ms; } .ds-btn-outline:hover { background: #171717; color: #fff; } .ds-btn-outline:focus-visible { outline: 2px solid #c2410c; outline-offset: 3px; }"
+    },
+    {
+      "name": "Section Title",
+      "kind": "custom",
+      "description": "Large tight headline with the one orange rule.",
+      "html": "<div><h2 class=\"ds-title\">Experience</h2><div class=\"ds-rule\"></div></div>",
+      "css": ".ds-title { margin: 0; font-size: 3rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1; color: #171717; } .ds-rule { margin-top: 16px; height: 4px; width: 56px; background: #f97316; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "button-outline",
+      "description": "Translucent sticky bar with ink monogram and underlined hover links.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-mono\" href=\"#\">AS</a><span><a class=\"ds-link\" href=\"#\">About</a><a class=\"ds-link\" href=\"#\">Projects</a></span></nav>",
+      "css": ".ds-nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); } .ds-mono { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 9999px; background: #171717; color: #fff; font-size: 14px; font-weight: 800; text-decoration: none; transition: background-color 200ms, color 200ms; } .ds-mono:hover { background: #f97316; color: #171717; } .ds-link { margin-left: 32px; font-size: 14px; font-weight: 600; color: #171717; text-decoration: none; } .ds-link:hover { color: #c2410c; text-decoration: underline; text-decoration-color: #f97316; text-decoration-thickness: 2px; text-underline-offset: 8px; } .ds-link:focus-visible, .ds-mono:focus-visible { outline: 2px solid #c2410c; outline-offset: 3px; }"
+    },
+    {
+      "name": "Skill Chip",
+      "kind": "chip",
+      "refersTo": "tag-skill",
+      "description": "White chip with hairline peach border.",
+      "html": "<span class=\"ds-chip\">TypeScript</span>",
+      "css": ".ds-chip { display: inline-block; padding: 6px 12px; background: #fff; border: 1px solid #fed7aa; border-radius: 8px; color: #1f2937; font-size: 14px; font-weight: 500; }"
+    },
+    {
+      "name": "Project Tag",
+      "kind": "chip",
+      "refersTo": "tag-project",
+      "description": "Peach-filled small tag.",
+      "html": "<span class=\"ds-ptag\">React</span>",
+      "css": ".ds-ptag { display: inline-block; padding: 4px 10px; background: #ffedd5; border-radius: 6px; color: #171717; font-size: 12px; font-weight: 500; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "White field, gray border, orange focus ring.",
+      "html": "<input class=\"ds-input\" placeholder=\"Your name\" />",
+      "css": ".ds-input { width: 100%; box-sizing: border-box; padding: 10px 16px; background: #fff; color: #171717; border: 1px solid #d1d5db; border-radius: 8px; font: inherit; } .ds-input::placeholder { color: #6b7280; } .ds-input:focus { outline: none; border-color: #171717; box-shadow: 0 0 0 2px #f97316; }"
+    },
+    {
+      "name": "Experience Row with Marker",
+      "kind": "custom",
+      "description": "Hairline-divided row; key number on the marker stripe, gray square bullet.",
+      "html": "<div class=\"ds-row\"><p class=\"ds-li\"><span class=\"ds-dot\"></span><span>Cut cold starts <strong class=\"ds-mark\">from 2 mins to sub-second</strong>.</span></p></div>",
+      "css": ".ds-row { border-top: 1px solid #fed7aa; border-bottom: 1px solid #fed7aa; padding: 24px 0; } .ds-li { display: flex; align-items: flex-start; margin: 0; color: #1f2937; line-height: 1.625; } .ds-dot { flex-shrink: 0; width: 6px; height: 6px; margin: 10px 12px 0 0; background: #9ca3af; } .ds-mark { font-weight: 600; color: #171717; background: #ffedd5; padding: 0 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Highlighter on White Paper",
+    "overview": "A white page with near-black ink, and orange used the way a highlighter is used: a short rule under a section title, a dot beside the role, a marker stripe behind a key number, one primary button. Everything else is ink, white and gray. Headings are large and tightly set in Bricolage Grotesque; structure comes from hairlines and whitespace, not boxes. The page is a single scroll, so one gradient (white at the top, faint orange warmth by the bottom) is the only atmosphere.\n\nThe earlier all-orange fields direction was rejected by the owner as ugly; orange stays a minority mark. The motorcycle identity shows through the bikes photo in the hero card and the cursor, not through ornament. Dense project and experience copy is made skimmable by the highlighted numbers.",
+    "keyCharacteristics": [
+      "White ground, ink text, orange only as a small mark.",
+      "Big, tight, extra-bold Bricolage headings; plain body copy in gray-700/800.",
+      "Hairline dividers (orange-200) between rows; no card boxes around content.",
+      "Pill buttons; rounded image cards; small rounded tags.",
+      "Flat: no shadows; depth is a blurred sticky nav and one rounded dark hero card.",
+      "Thumbnails grayscale until hover."
+    ],
+    "rules": [
+      { "name": "The Highlighter Rule", "body": "Orange is a mark, not a field. It may be a rule, a dot, a stripe behind a number, a primary button, or a deep-orange subtitle. It never fills a section, a card, or a bullet.", "section": "colors" },
+      { "name": "The Ink-on-Orange Rule", "body": "Text on #f97316 is ink. Orange text on white is #c2410c only.", "section": "colors" },
+      { "name": "The One Family Rule", "body": "No second typeface. Hierarchy comes from weight (800 vs 400/500/600) and size.", "section": "typography" },
+      { "name": "The Skim Rule", "body": "Key numbers in bulleted copy are bolded (600, ink) on the Marker Peach stripe; nothing else is highlighted this way.", "section": "typography" },
+      { "name": "The Flat Rule", "body": "Surfaces are flat; state is shown by colour inversion, underline colour, or grayscale removal, not by shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep orange to a rule, a dot, a marker stripe on key numbers, primary buttons, and burnt-orange subtitles.",
+      "Do set text on #f97316 in ink, and small orange text on white in #c2410c.",
+      "Do separate content with hairline peach rules and whitespace rather than boxes.",
+      "Do keep bullets gray and thumbnails grayscale until hover.",
+      "Do keep the hero photo at its natural wide proportion in the rounded card.",
+      "Do respect prefers-reduced-motion for any new animation, and keep touch and keyboard paths for every control since the native cursor is hidden."
+    ],
+    "donts": [
+      "Don't fill sections, cards or bullets with orange, or revive the all-orange papercut direction.",
+      "Don't add shadows.",
+      "Don't introduce a second typeface.",
+      "Don't reintroduce the growing-vines canvas or Konami mode; both were removed deliberately.",
+      "Don't use white text on #f97316 or #f97316 for small text on white.",
+      "Don't invent metrics or proof in copy (see PRODUCT.md)."
+    ]
+  }
+}
