@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import motorcycle from "./assets/motorcycle.jpg";
 
-type MotorcycleCursorProps = {
-  pixelate?: boolean;
-};
-
 const lerp = (start: number, end: number, factor: number) => {
   return start + (end - start) * factor;
 };
 
-const MotorcycleCursor: React.FC<MotorcycleCursorProps> = ({ pixelate = false }) => {
+const MotorcycleCursor: React.FC = () => {
   // Null until the first real mouse move, so touch devices never see a stuck cursor.
   const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
   const [tilt, setTilt] = useState(0);
@@ -65,7 +61,6 @@ const MotorcycleCursor: React.FC<MotorcycleCursorProps> = ({ pixelate = false })
         src={motorcycle}
         alt=""
         className="w-10 h-10"
-        style={pixelate ? { imageRendering: "pixelated", filter: "saturate(1.15) contrast(1.1)" } : undefined}
       />
     </div>
   );
