@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
+import SectionTitle from "./SectionTitle";
 import urlScannerImg from "./assets/urlScannerImg.png";
 import meetPointImg from "./assets/meetpoint.png";
 import voiceBuddyImg from "./assets/voicebuddy.png";
@@ -88,20 +89,20 @@ const otherProjects: OtherProject[] = [
   },
 ];
 
-// Featured work reads as rows, not equal cards: the pitch on the left, the evidence on the right.
+// Featured work: rows on hairlines, the pitch beside the evidence.
 const FeaturedProjectRow: React.FC<{ project: FeaturedProject }> = ({ project }) => (
-  <article className="grid lg:grid-cols-5 gap-x-10 gap-y-5 py-8 first:pt-0">
+  <article className="grid lg:grid-cols-5 gap-x-10 gap-y-6 py-10 first:pt-0">
     <div className="lg:col-span-2 space-y-3">
       <div>
-        <h3 className="text-2xl font-bold text-[#0A0A0A]">{project.title}</h3>
-        <p className="text-sm font-medium text-gray-600 mt-1">{project.subtitle}</p>
+        <h3 className="text-3xl font-extrabold">{project.title}</h3>
+        <p className="text-base font-semibold text-accent-deep mt-1">{project.subtitle}</p>
       </div>
 
-      <p className="text-gray-600 leading-relaxed">{project.description}</p>
+      <p className="leading-relaxed text-gray-700">{project.description}</p>
 
       <div className="flex flex-wrap gap-2 pt-1">
         {project.technologies.map((tech, i) => (
-          <span key={i} className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md">
+          <span key={i} className="px-2.5 py-1 bg-orange-100 text-ink text-xs font-medium rounded-md">
             {tech}
           </span>
         ))}
@@ -112,17 +113,17 @@ const FeaturedProjectRow: React.FC<{ project: FeaturedProject }> = ({ project })
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-sm font-medium text-blue-700 hover:underline pt-1"
+          className="inline-block font-semibold underline decoration-accent decoration-2 underline-offset-4 hover:bg-accent-soft"
         >
-          View Project →
+          View Project
         </a>
       )}
     </div>
 
     <ul className="lg:col-span-3 space-y-3">
       {project.highlights.map((h, i) => (
-        <li key={i} className="flex items-start text-sm md:text-base text-gray-700 leading-relaxed">
-          <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full mt-2.5 mr-3 flex-shrink-0" />
+        <li key={i} className="flex items-start text-base leading-relaxed text-gray-800">
+          <span aria-hidden="true" className="inline-block w-1.5 h-1.5 bg-gray-400 mt-2.5 mr-3 flex-shrink-0" />
           <span>{h}</span>
         </li>
       ))}
@@ -132,31 +133,33 @@ const FeaturedProjectRow: React.FC<{ project: FeaturedProject }> = ({ project })
 
 const ProjectsSection: React.FC = () => {
   return (
-    <section className="w-full px-6 md:px-12 lg:px-24 py-20 md:py-24">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[12rem_1fr] gap-x-12 gap-y-8">
-        <h2 className="text-3xl font-bold self-start lg:sticky lg:top-24">Projects</h2>
+    <section className="w-full text-ink px-6 md:px-12 lg:px-24 py-20 md:py-28">
+      <div className="max-w-6xl mx-auto space-y-12">
+        <SectionTitle>Projects</SectionTitle>
 
-        <div>
-          {/* Featured Projects */}
-          <p className="text-gray-600 mb-8">Production-grade systems I've architected and shipped.</p>
-          <div className="divide-y divide-gray-200 border-y border-gray-200 mb-16">
-            {featuredProjects.map((project, index) => (
-              <FeaturedProjectRow key={index} project={project} />
-            ))}
+        <div className="space-y-16">
+          <div>
+            <p className="text-lg text-gray-700 mb-8 max-w-xl">Production-grade systems I've architected and shipped.</p>
+            <div className="divide-y divide-orange-200 border-y border-orange-200 pt-10">
+              {featuredProjects.map((project, index) => (
+                <FeaturedProjectRow key={index} project={project} />
+              ))}
+            </div>
           </div>
 
-          {/* Other Projects */}
-          <h3 className="text-xl font-bold mb-6 text-gray-700">Hackathons & Other Work</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {otherProjects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                title={project.title}
-                description={project.description}
-                imageUrl={project.imageUrl}
-                link={project.link}
-              />
-            ))}
+          <div>
+            <h3 className="text-xl font-extrabold mb-6">Hackathons &amp; Other Work</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+              {otherProjects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  title={project.title}
+                  description={project.description}
+                  imageUrl={project.imageUrl}
+                  link={project.link}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

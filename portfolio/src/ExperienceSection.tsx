@@ -1,4 +1,5 @@
 import React from "react";
+import SectionTitle from "./SectionTitle";
 
 interface ExperienceItem {
   company: string;
@@ -47,7 +48,7 @@ const experiences: ExperienceItem[] = [
 const renderHighlight = (text: string): React.ReactNode[] =>
   text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
     i % 2 === 1 ? (
-      <strong key={i} className="font-semibold text-[#0A0A0A]">
+      <strong key={i} className="font-semibold text-ink bg-accent-soft px-0.5">
         {part}
       </strong>
     ) : (
@@ -57,39 +58,37 @@ const renderHighlight = (text: string): React.ReactNode[] =>
 
 const ExperienceSection: React.FC = () => {
   return (
-    <section className="w-full px-6 md:px-12 lg:px-24 py-20 md:py-24 bg-white">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[12rem_1fr] gap-x-12 gap-y-8">
-        <h2 className="text-3xl font-bold self-start lg:sticky lg:top-24">Experience</h2>
+    <section className="w-full text-ink px-6 md:px-12 lg:px-24 py-20 md:py-28">
+      <div className="max-w-6xl mx-auto space-y-12">
+        <SectionTitle>Experience</SectionTitle>
 
-        <div className="space-y-10">
+        <div className="divide-y divide-orange-200 border-y border-orange-200">
           {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="relative pl-6 border-l-2 border-gray-200 hover:border-[#0A0A0A] transition-colors duration-300"
-            >
-              {/* Timeline dot */}
-              <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-[#0A0A0A] border-2 border-white" />
+            <div key={index} className="grid md:grid-cols-[12rem_1fr] gap-x-10 gap-y-3 py-8">
+              {/* When and where */}
+              <div className="text-sm text-gray-600 md:pt-1.5">
+                {exp.duration && <p className="font-semibold text-ink">{exp.duration}</p>}
+                {exp.location && <p>{exp.location}</p>}
+              </div>
 
-              <div className="space-y-3">
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-                  <div>
-                    <h3 className="text-xl font-bold text-[#0A0A0A]">{exp.role}</h3>
-                    <p className="text-base text-gray-600 font-medium">{exp.company}</p>
-                  </div>
-                  {(exp.duration || exp.location) && (
-                    <div className="text-sm text-gray-500">
-                      {[exp.duration, exp.location].filter(Boolean).join(" · ")}
-                    </div>
-                  )}
+              <div className="space-y-4">
+                {/* Role */}
+                <div>
+                  <h3 className="flex items-center gap-3 text-2xl font-extrabold">
+                    {index === 0 && (
+                      <span aria-hidden="true" className="inline-block w-3 h-3 rounded-full bg-accent flex-shrink-0" />
+                    )}
+                    {exp.role}
+                  </h3>
+                  <p className="text-lg font-medium text-gray-700">{exp.company}</p>
                 </div>
 
                 {/* Highlights */}
                 {exp.highlights && exp.highlights.length > 0 && (
-                  <ul className="space-y-2.5 max-w-3xl">
+                  <ul className="space-y-3 max-w-3xl">
                     {exp.highlights.map((highlight, hIndex) => (
-                      <li key={hIndex} className="flex items-start text-sm md:text-base text-gray-700 leading-relaxed">
-                        <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full mt-2.5 mr-3 flex-shrink-0" />
+                      <li key={hIndex} className="flex items-start text-base leading-relaxed text-gray-800">
+                        <span aria-hidden="true" className="inline-block w-1.5 h-1.5 bg-gray-400 mt-2.5 mr-3 flex-shrink-0" />
                         <span>{renderHighlight(highlight)}</span>
                       </li>
                     ))}
@@ -100,10 +99,7 @@ const ExperienceSection: React.FC = () => {
                 {exp.technologies && exp.technologies.length > 0 && (
                   <div className="flex flex-wrap gap-2 pt-1">
                     {exp.technologies.map((tech, tIndex) => (
-                      <span
-                        key={tIndex}
-                        className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md"
-                      >
+                      <span key={tIndex} className="px-2.5 py-1 bg-white border border-orange-200 text-gray-800 text-xs font-medium rounded-md">
                         {tech}
                       </span>
                     ))}
