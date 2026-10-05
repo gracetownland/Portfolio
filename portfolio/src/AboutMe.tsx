@@ -20,13 +20,13 @@ const AboutMe: React.FC = () => {
 
           <p className="text-gray-700 leading-relaxed">
             I'm a third-year Computer Science student at UBC, originally from Bangalore, India.
-            I specialize in building cloud-native applications — from serverless backends on AWS to
-            RAG-powered AI systems that serve thousands of users.
+            I build full-stack and cloud-native applications, from serverless backends on AWS to
+            systems that serve thousands of users. I'm currently a Software Engineering Intern at Rivian.
           </p>
 
           <p className="text-gray-700 leading-relaxed">
-            At the AWS Cloud Innovation Centre, I lead end-to-end development of open-source GenAI tools,
-            Previously, I managed a team of 8 developers at Coast Capital
+            Previously, at the AWS Cloud Innovation Centre, I led end-to-end development of open-source tools for
+            sponsor teams, and before that I managed a team of 8 developers at Coast Capital
             Savings to deliver an OCR-powered document management platform.
           </p>
 
@@ -34,13 +34,13 @@ const AboutMe: React.FC = () => {
             Outside of code, I play guitar, ride motorcycles, and make{" "}
             <a
               href="https://www.youtube.com/@gracetownland"
-              className="text-blue-500 hover:underline"
+              className="text-blue-700 underline underline-offset-4 hover:text-blue-900"
               target="_blank"
               rel="noopener noreferrer"
             >
               videos
             </a>
-            . 
+            .
           </p>
 
           <div className="pt-2">

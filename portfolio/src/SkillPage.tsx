@@ -30,29 +30,27 @@ const skillCategories: SkillCategory[] = [
 
 const SkillPage: React.FC = () => {
   return (
-    <section className="w-full px-6 md:px-12 lg:px-24 py-16 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-10">Skills</h2>
+    <section className="w-full px-6 md:px-12 lg:px-24 py-20 md:py-24 bg-white">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-[12rem_1fr] gap-x-12 gap-y-8">
+        <h2 className="text-3xl font-bold self-start lg:sticky lg:top-24">Skills</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <dl className="divide-y divide-gray-200 border-y border-gray-200">
           {skillCategories.map((category, index) => (
-            <div key={index} className="space-y-3">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500">
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
+            <div key={index} className="grid md:grid-cols-[11rem_1fr] gap-x-8 gap-y-3 py-5">
+              <dt className="text-sm font-semibold text-gray-700">{category.title}</dt>
+              <dd className="flex flex-wrap gap-2">
                 {category.skills.map((skill, sIndex) => (
                   <span
                     key={sIndex}
-                    className="px-3 py-1.5 bg-gray-100 text-gray-800 text-sm font-medium rounded-lg hover:bg-[#0A0A0A] hover:text-white transition-colors duration-200 cursor-default"
+                    className="px-3 py-1.5 bg-gray-100 text-gray-800 text-sm font-medium rounded-lg"
                   >
                     {skill}
                   </span>
                 ))}
-              </div>
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );

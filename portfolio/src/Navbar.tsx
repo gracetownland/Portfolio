@@ -41,6 +41,8 @@ const Navbar: React.FC = () => {
           className="md:hidden p-2 text-gray-700"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {mobileOpen ? (
@@ -54,7 +56,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-gray-100 border-t border-gray-200 px-6 py-4 space-y-3">
+        <div id="mobile-nav" className="md:hidden bg-gray-100 border-t border-gray-200 px-6 py-4 space-y-3">
           {navLinks.map((link) => (
             <a
               key={link.href}

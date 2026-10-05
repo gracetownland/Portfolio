@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "portfolio/src/index.css"
+        ],
+        "createdAt": "2026-10-05T03:09:09.195Z",
+        "reason": "Konami-mode retro pixel/neon grid is the intentional alternate theme (documented in CLAUDE.md and PRODUCT.md); not a decorative default"
+      }
+    ]
+  }
+}

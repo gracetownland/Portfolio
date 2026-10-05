@@ -88,26 +88,18 @@ const otherProjects: OtherProject[] = [
   },
 ];
 
-const FeaturedProjectCard: React.FC<{ project: FeaturedProject; index: number }> = ({ project, index }) => (
-  <div className={`p-6 md:p-8 rounded-2xl border border-gray-200 bg-white hover:shadow-lg transition-shadow duration-300 ${index === 0 ? "md:col-span-2 lg:col-span-1" : ""}`}>
-    <div className="space-y-4">
+// Featured work reads as rows, not equal cards: the pitch on the left, the evidence on the right.
+const FeaturedProjectRow: React.FC<{ project: FeaturedProject }> = ({ project }) => (
+  <article className="grid lg:grid-cols-5 gap-x-10 gap-y-5 py-8 first:pt-0">
+    <div className="lg:col-span-2 space-y-3">
       <div>
-        <p className="text-sm font-semibold text-orange-500 uppercase tracking-wide">{project.subtitle}</p>
-        <h3 className="text-2xl font-bold text-[#0A0A0A] mt-1">{project.title}</h3>
+        <h3 className="text-2xl font-bold text-[#0A0A0A]">{project.title}</h3>
+        <p className="text-sm font-medium text-gray-600 mt-1">{project.subtitle}</p>
       </div>
 
       <p className="text-gray-600 leading-relaxed">{project.description}</p>
 
-      <ul className="space-y-2">
-        {project.highlights.map((h, i) => (
-          <li key={i} className="flex items-start text-sm text-gray-700">
-            <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full mt-1.5 mr-2.5 flex-shrink-0" />
-            <span>{h}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex flex-wrap gap-2 pt-2">
+      <div className="flex flex-wrap gap-2 pt-1">
         {project.technologies.map((tech, i) => (
           <span key={i} className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md">
             {tech}
@@ -120,41 +112,52 @@ const FeaturedProjectCard: React.FC<{ project: FeaturedProject; index: number }>
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-sm font-medium text-blue-500 hover:underline mt-2"
+          className="inline-block text-sm font-medium text-blue-700 hover:underline pt-1"
         >
           View Project →
         </a>
       )}
     </div>
-  </div>
+
+    <ul className="lg:col-span-3 space-y-3">
+      {project.highlights.map((h, i) => (
+        <li key={i} className="flex items-start text-sm md:text-base text-gray-700 leading-relaxed">
+          <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full mt-2.5 mr-3 flex-shrink-0" />
+          <span>{h}</span>
+        </li>
+      ))}
+    </ul>
+  </article>
 );
 
 const ProjectsSection: React.FC = () => {
   return (
-    <section className="w-full px-6 md:px-12 lg:px-24 py-16">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-4">Projects</h2>
+    <section className="w-full px-6 md:px-12 lg:px-24 py-20 md:py-24">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-[12rem_1fr] gap-x-12 gap-y-8">
+        <h2 className="text-3xl font-bold self-start lg:sticky lg:top-24">Projects</h2>
 
-        {/* Featured Projects */}
-        <p className="text-gray-500 mb-8">Production-grade systems I've architected and shipped.</p>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-          {featuredProjects.map((project, index) => (
-            <FeaturedProjectCard key={index} project={project} index={index} />
-          ))}
-        </div>
+        <div>
+          {/* Featured Projects */}
+          <p className="text-gray-600 mb-8">Production-grade systems I've architected and shipped.</p>
+          <div className="divide-y divide-gray-200 border-y border-gray-200 mb-16">
+            {featuredProjects.map((project, index) => (
+              <FeaturedProjectRow key={index} project={project} />
+            ))}
+          </div>
 
-        {/* Other Projects */}
-        <h3 className="text-xl font-bold mb-6 text-gray-700">Hackathons & Other Work</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {otherProjects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              title={project.title}
-              description={project.description}
-              imageUrl={project.imageUrl}
-              link={project.link}
-            />
-          ))}
+          {/* Other Projects */}
+          <h3 className="text-xl font-bold mb-6 text-gray-700">Hackathons & Other Work</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {otherProjects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                title={project.title}
+                description={project.description}
+                imageUrl={project.imageUrl}
+                link={project.link}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

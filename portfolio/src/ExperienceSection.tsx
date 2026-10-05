@@ -3,24 +3,28 @@ import React from "react";
 interface ExperienceItem {
   company: string;
   role: string;
-  duration: string;
-  location: string;
-  highlights: string[];
-  technologies: string[];
+  duration?: string;
+  location?: string;
+  highlights?: string[];
+  technologies?: string[];
 }
 
 const experiences: ExperienceItem[] = [
   {
+    company: "Rivian",
+    role: "Software Engineering Intern",
+  },
+  {
     company: "AWS Cloud Innovation Centre @ UBC",
     role: "Software Developer Intern",
-    duration: "Sept 2025 – Present",
+    duration: "Sept 2025 – Aug 2026",
     location: "Vancouver, BC",
     highlights: [
-      "Led end-to-end development of open-source GenAI applications for 3+ sponsor teams, facilitating stakeholder meetings and mentoring juniors on clean code.",
-      "Engineered a pre-warming strategy with Provisioned Concurrency and connection pooling, reducing Lambda cold starts from 2 mins to sub-second and cutting database costs by 60%.",
-      "Automated deployments via a standardized AWS CI/CD pipeline (CodeBuild, CodePipeline, ECR) with multi-stage Docker builds, reducing deployment latency by 90%.",
+      "Led end-to-end development of open-source GenAI applications for **3+ sponsor teams**, facilitating stakeholder meetings and mentoring juniors on clean code.",
+      "Engineered a pre-warming strategy with Provisioned Concurrency and connection pooling, reducing Lambda cold starts **from 2 mins to sub-second** and cutting database costs by **60%**.",
+      "Automated deployments via a standardized AWS CI/CD pipeline (CodeBuild, CodePipeline, ECR) with multi-stage Docker builds, reducing deployment latency by **90%**.",
       "Optimized serverless environments by lazy loading heavy Python dependencies and decoupling core logic, minimizing container image sizes and initialization overhead.",
-      "Represented the CIC at BCNET Connect 2026, delivering technical workshops and project showcases to 800+ EdTech professionals.",
+      "Represented the CIC at BCNET Connect 2026, delivering technical workshops and project showcases to **800+ EdTech professionals**.",
     ],
     technologies: ["AWS CDK", "Lambda", "ECS", "Bedrock", "Docker", "PostgreSQL", "CI/CD", "WebSocket"],
   },
@@ -30,22 +34,34 @@ const experiences: ExperienceItem[] = [
     duration: "Jan 2025 – May 2025",
     location: "Vancouver, BC",
     highlights: [
-      "Led a team of 8 developers to deliver a full-stack document management platform for mortgage applications, managing sprint planning, code reviews, and stakeholder communication.",
+      "Led a team of **8 developers** to deliver a full-stack document management platform for mortgage applications, managing sprint planning, code reviews, and stakeholder communication.",
       "Architected a serverless OCR pipeline using AWS Textract and OpenCV to extract structured fields and barcodes from multi-format documents (PDF, Image, DOCX).",
       "Built a React + TypeScript frontend with JWT-based session management via AWS Cognito and role-based access control to secure sensitive financial data.",
-      "Deployed 10+ AWS Lambda functions behind API Gateway, storing metadata in Aurora Serverless RDS and raw files across dedicated S3 buckets.",
+      "Deployed **10+ AWS Lambda functions** behind API Gateway, storing metadata in Aurora Serverless RDS and raw files across dedicated S3 buckets.",
     ],
     technologies: ["React", "TypeScript", "AWS Textract", "Cognito", "Lambda", "Aurora RDS", "S3", "OpenCV"],
   },
 ];
 
+// `**text**` marks the numbers a skimmer should catch.
+const renderHighlight = (text: string): React.ReactNode[] =>
+  text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i} className="font-semibold text-[#0A0A0A]">
+        {part}
+      </strong>
+    ) : (
+      part
+    )
+  );
+
 const ExperienceSection: React.FC = () => {
   return (
-    <section className="w-full px-6 md:px-12 lg:px-24 py-16 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-10">Experience</h2>
+    <section className="w-full px-6 md:px-12 lg:px-24 py-20 md:py-24 bg-white">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-[12rem_1fr] gap-x-12 gap-y-8">
+        <h2 className="text-3xl font-bold self-start lg:sticky lg:top-24">Experience</h2>
 
-        <div className="space-y-8">
+        <div className="space-y-10">
           {experiences.map((exp, index) => (
             <div
               key={index}
@@ -61,32 +77,38 @@ const ExperienceSection: React.FC = () => {
                     <h3 className="text-xl font-bold text-[#0A0A0A]">{exp.role}</h3>
                     <p className="text-base text-gray-600 font-medium">{exp.company}</p>
                   </div>
-                  <div className="text-sm text-gray-500">
-                    {exp.duration} · {exp.location}
-                  </div>
+                  {(exp.duration || exp.location) && (
+                    <div className="text-sm text-gray-500">
+                      {[exp.duration, exp.location].filter(Boolean).join(" · ")}
+                    </div>
+                  )}
                 </div>
 
                 {/* Highlights */}
-                <ul className="space-y-2">
-                  {exp.highlights.map((highlight, hIndex) => (
-                    <li key={hIndex} className="flex items-start text-sm text-gray-700 leading-relaxed">
-                      <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full mt-2 mr-3 flex-shrink-0" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+                {exp.highlights && exp.highlights.length > 0 && (
+                  <ul className="space-y-2.5 max-w-3xl">
+                    {exp.highlights.map((highlight, hIndex) => (
+                      <li key={hIndex} className="flex items-start text-sm md:text-base text-gray-700 leading-relaxed">
+                        <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full mt-2.5 mr-3 flex-shrink-0" />
+                        <span>{renderHighlight(highlight)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {exp.technologies.map((tech, tIndex) => (
-                    <span
-                      key={tIndex}
-                      className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                {exp.technologies && exp.technologies.length > 0 && (
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {exp.technologies.map((tech, tIndex) => (
+                      <span
+                        key={tIndex}
+                        className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-md"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}

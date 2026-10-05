@@ -39,10 +39,11 @@ const ScrollToTop: React.FC = () => {
             bg-gradient-to-br from-orange-400 to-pink-500 text-white text-2xl
             hover:from-orange-500 hover:to-pink-600 hover:scale-110
             transition-all duration-300 ease-out
-            ${isLaunching ? "animate-bounce -translate-y-4" : ""}`}
-                    title="Blast off to top! 🚀"
+            ${isLaunching ? "-translate-y-4" : ""}`}
+                    aria-label="Back to top"
+                    title="Blast off to top!"
                 >
-                    <span className={`inline-block ${isLaunching ? "animate-wiggle" : ""}`}>
+                    <span aria-hidden="true" className={`inline-block ${isLaunching ? "animate-wiggle" : ""}`}>
                         🚀
                     </span>
                 </button>

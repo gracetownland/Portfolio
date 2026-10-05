@@ -10,7 +10,8 @@ const lerp = (start: number, end: number, factor: number) => {
 };
 
 const MotorcycleCursor: React.FC<MotorcycleCursorProps> = ({ pixelate = false }) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  // Null until the first real mouse move, so touch devices never see a stuck cursor.
+  const [position, setPosition] = useState<{ x: number; y: number } | null>(null);
   const [tilt, setTilt] = useState(0);
   const [facingLeft, setFacingLeft] = useState(false);
   const [prevPosition, setPrevPosition] = useState({ x: 0, y: 0 });
@@ -47,8 +48,11 @@ const MotorcycleCursor: React.FC<MotorcycleCursorProps> = ({ pixelate = false })
     return () => window.removeEventListener("mousemove", moveCursor);
   }, [prevPosition, tilt]);
 
+  if (!position) return null;
+
   return (
     <div
+      aria-hidden="true"
       className="fixed pointer-events-none transition-transform duration-200 ease-out"
       style={{
         left: position.x,
@@ -59,7 +63,7 @@ const MotorcycleCursor: React.FC<MotorcycleCursorProps> = ({ pixelate = false })
     >
       <img
         src={motorcycle}
-        alt="Motorcycle Cursor"
+        alt=""
         className="w-10 h-10"
         style={pixelate ? { imageRendering: "pixelated", filter: "saturate(1.15) contrast(1.1)" } : undefined}
       />
