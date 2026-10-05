@@ -12,13 +12,13 @@ const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-gray-100/90 backdrop-blur-sm border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 py-4 flex items-center justify-between">
         {/* Logo / Name */}
         <a
           href="#"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          className="text-lg font-bold text-[#0A0A0A] hover:text-orange-500 transition-colors"
+          className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-ink text-white text-sm font-extrabold hover:bg-accent hover:text-ink transition-colors"
         >
           AS
         </a>
@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-[#0A0A0A] hover:underline underline-offset-4 transition-colors"
+              className="text-sm font-semibold text-ink hover:text-accent-deep hover:underline decoration-accent decoration-2 underline-offset-8 transition-colors"
             >
               {link.label}
             </a>
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 text-gray-700"
+          className="md:hidden p-2 text-ink"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation menu"
           aria-expanded={mobileOpen}
@@ -56,12 +56,12 @@ const Navbar: React.FC = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div id="mobile-nav" className="md:hidden bg-gray-100 border-t border-gray-200 px-6 py-4 space-y-3">
+        <div id="mobile-nav" className="md:hidden bg-white border-t border-gray-200 px-6 py-4 space-y-3">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="block text-sm font-medium text-gray-700 hover:text-[#0A0A0A]"
+              className="block text-sm font-semibold text-ink hover:text-accent-deep"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
