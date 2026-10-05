@@ -17,7 +17,7 @@ const AboutMe: React.FC = () => {
 
           <div className="space-y-5 max-w-2xl">
             <p className="text-lg md:text-xl leading-relaxed">
-              I'm a third-year Computer Science student at UBC, originally from Bangalore, India.
+              I'm a fifth-year Computer Science student at UBC, originally from Bangalore, India.
               I build full-stack and cloud-native applications, from serverless backends on AWS to
               systems that serve thousands of users. I'm currently a Software Engineering Intern at Rivian.
             </p>
