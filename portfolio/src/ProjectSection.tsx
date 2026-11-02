@@ -139,7 +139,6 @@ const ProjectsSection: React.FC = () => {
 
         <div className="space-y-16">
           <div>
-            <p className="text-lg text-gray-700 mb-8 max-w-xl">Production-grade systems I've architected and shipped.</p>
             <div className="divide-y divide-orange-200 border-y border-orange-200 pt-10">
               {featuredProjects.map((project, index) => (
                 <FeaturedProjectRow key={index} project={project} />

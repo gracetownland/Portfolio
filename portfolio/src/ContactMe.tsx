@@ -79,10 +79,6 @@ const ContactMe: React.FC = () => {
 
         <div className="grid lg:grid-cols-[minmax(0,36rem)_1fr] gap-x-20 gap-y-12">
         <div>
-          <p className="text-gray-700 mb-8">
-            Have a project in mind or want to chat? Drop me a message.
-          </p>
-
           <form onSubmit={handleSubmit} noValidate className="space-y-5">
             {/* Name */}
             <div>
