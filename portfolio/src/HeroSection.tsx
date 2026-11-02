@@ -1,5 +1,6 @@
 import React from "react";
 import bannerImg from "./assets/banner.jpg";
+import rvTechLogo from "./assets/rv_tech.png";
 
 // Everything in the statement comes from the experience, project and skills copy elsewhere on the page.
 const stack = ["TypeScript", "Python", "Java", "React", "AWS"];
@@ -19,7 +20,8 @@ const HeroSection: React.FC = () => {
 
             <p className="flex items-center gap-3 text-xl md:text-2xl font-semibold text-ink lg:whitespace-nowrap">
               <span aria-hidden="true" className="inline-block w-3 h-3 rounded-full bg-accent" />
-              Software Engineering Intern @ Rivian
+              Software Engineering Intern @ RV Tech
+              <img src={rvTechLogo} alt="" aria-hidden="true" className="h-7 w-auto" />
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">

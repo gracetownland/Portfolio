@@ -12,7 +12,7 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    company: "Rivian",
+    company: "RV Tech",
     role: "Software Engineering Intern",
   },
   {

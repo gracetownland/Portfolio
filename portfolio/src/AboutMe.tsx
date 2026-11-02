@@ -19,7 +19,7 @@ const AboutMe: React.FC = () => {
             <p className="text-lg md:text-xl leading-relaxed">
               I'm a fifth-year Computer Science student at UBC, originally from Bangalore, India.
               I build full-stack and cloud-native applications, from serverless backends on AWS to
-              systems that serve thousands of users. I'm currently a Software Engineering Intern at Rivian.
+              systems that serve thousands of users. I'm currently a Software Engineering Intern at RV Tech.
             </p>
 
             <p className="text-base md:text-lg leading-relaxed text-gray-700">
