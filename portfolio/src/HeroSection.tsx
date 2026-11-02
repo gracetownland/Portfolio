@@ -54,8 +54,8 @@ const HeroSection: React.FC = () => {
           <div className="lg:pt-3 space-y-6">
             <p className="text-2xl lg:text-[1.65rem] font-semibold leading-snug text-gray-600 text-pretty">
               Fifth-year <span className="text-ink">Computer Science</span> at{" "}
-              <span className="text-ink">UBC</span>. Built an AI study companion for{" "}
-              <span className="text-ink bg-accent-soft px-1">100,000+ users</span>.
+              <span className="text-ink">UBC</span>. Ex{" "}
+              <span className="text-ink">AWS Cloud Innovation Centre @ UBC</span>.
             </p>
 
             <ul className="flex flex-wrap gap-2" aria-label="Main technologies">
